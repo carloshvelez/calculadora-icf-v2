@@ -1,15 +1,21 @@
 import { Text } from '@mantine/core';
 import classes from './TarjetaResultados.module.css';
 
+interface TarjetaProps {
+  titulo: string,
+  dato: number,
+  descripcion: string,
+}
  
 
-export default function TarjetaResultados(props) {
+export default function TarjetaResultados({titulo, dato, descripcion} : TarjetaProps) {
+  console.log(dato)
     return(
      <div className={classes.root}>
-     <div key={props.titulo} className={classes.stat}>
-      <Text className={classes.count}>{props.dato}</Text>
-      <Text className={classes.title}>{props.titulo}</Text>
-      <Text className={classes.description}>{props.descripcion}</Text>
+     <div key={titulo} className={classes.stat}>
+      <Text className={classes.count}>{dato}</Text>
+      <Text className={classes.title}>{titulo}</Text>
+      <Text className={classes.description}>{descripcion}</Text>
     </div>
     </div>
     )

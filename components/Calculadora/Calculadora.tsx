@@ -7,16 +7,20 @@ import GraficoBarras from '../GraficoBarras/GraficoBarras';
 import TarjetaResultados from '../TarjetaResultados/TarjetaResultados';
 import classes from './Calculadora.module.css'
 
-function calcularDiferenciaConfiable(desviacion:number, confiabilidad:number):string{
+
+// Calcular EED:
+
+function calcularDiferenciaConfiable(desviacion:number, confiabilidad:number):number{
     let complementariaConfiabilidad = 1-confiabilidad;         
         let eem = desviacion * Math.sqrt(complementariaConfiabilidad);
         let eed = eem * Math.sqrt(2);        
-        return eed.toFixed(2)     
-        
-
+        return eed     
     }
 
 
+
+
+    
     //RENDERIZADO DEL COMPONENTE
 
 export default function Calculadora() {
@@ -30,7 +34,7 @@ export default function Calculadora() {
       pretest: null,
       postest: null,
     },
-
+    //Validadores del formulario
     validate: {
       desvest: (value) => (value ?? 0 >= 0 ? null : 'La desviación estándar debe ser un número positivo'),      
       confiabilidad: (value) => ((value ?? 0 )> 0 && (value ?? 0 < 1) ? null : 'La confiabilidad debe ser un número entre 0 y 1'), 
@@ -38,15 +42,28 @@ export default function Calculadora() {
     },
   });
 
+  //Declarar interface para data del gráfico
+  interface GraficoData{
+    desvest: number,
+    confiabilidad: number,
+    pretest: number,
+    postest: number,  
+  }
+
 
   // Declaración de useStates
   const [eed,  setEed] = useState(0)
-  const [quiereICF, setQuiereIcf] = useState(0)
+  const [quiereICF, setQuiereIcf] = useState(false)
   const [icf, setIcf] = useState<number | null>(null)
-  const [dataGrafico, setDataGrafico] = useState([{}])
+  const [dataGrafico, setDataGrafico] = useState <GraficoData>({
+    desvest: 0,
+    confiabilidad: 0,
+    pretest: 0,
+    postest: 0,   
+  })
 
   
-
+  //Manejar evento submit
   function handleSubmit (values:any):any{
     
     let eed:number = calcularDiferenciaConfiable(values.desvest, values.confiabilidad)         
@@ -54,7 +71,7 @@ export default function Calculadora() {
     if (values.postest !== "" && values.pretest !== "") {
         setIcf((values.postest - values.pretest)/eed) 
         setDataGrafico(values)
-        console.log(dataGrafico.pretest)
+        console.log(dataGrafico)
       }
     else {
         setIcf(null)
@@ -62,8 +79,7 @@ export default function Calculadora() {
   }
 
   return (
-    <Flex gap="sm"  justify="space-around" className={classes.aplicacion}>
-    
+    <Flex gap="sm"  justify="space-around" className={classes.aplicacion}>    
     <Box maw={280} mx={25} className={classes.formulario}>
       <form onSubmit={form.onSubmit(handleSubmit)}>
         <NumberInput
@@ -116,13 +132,13 @@ export default function Calculadora() {
     <Box mx="20" >
     <Flex gap="lg"  justify="center" className={classes.tarjetas}>
       {eed ? <>        
-        <TarjetaResultados dato={eed} titulo="EED" descripcion="Error estandar de la diferencia"/>         
-        <TarjetaResultados dato={(eed*1.96).toFixed(2)} titulo="Punto de corte" descripcion="Debe obtenerse al menos esta diferencia"/>         
+        <TarjetaResultados dato={Math.round(eed * 1000) / 1000} titulo="EED" descripcion="Error estandar de la diferencia"/>         
+        <TarjetaResultados dato={Math.round((eed * 1.96) * 1000) / 1000} titulo="Punto de corte" descripcion="Debe obtenerse al menos esta diferencia"/>         
         </>: null}
       {quiereICF && eed && icf? 
       <>            
-          <TarjetaResultados dato={dataGrafico.postest - dataGrafico.pretest} titulo="Diferencia actual" descripcion="Diferencia entre postest y pretest"/> 
-          <TarjetaResultados dato={icf.toFixed(2)} titulo="Indice de cambio fiable" descripcion={Math.abs(icf) >= 1.96 ? "Diferencia fiable" : "Diferencia NO fiable"}/>      
+          <TarjetaResultados dato={dataGrafico.postest  - dataGrafico.pretest} titulo="Diferencia actual" descripcion="Diferencia entre postest y pretest"/> 
+          <TarjetaResultados dato={Math.round(icf * 1000)/1000} titulo="Indice de cambio fiable" descripcion={Math.abs(icf) >= 1.96 ? "Diferencia fiable" : "Diferencia NO fiable"}/>      
       </>
          :null}     
     </Flex>
@@ -130,7 +146,7 @@ export default function Calculadora() {
     {quiereICF && eed && icf?
       <Flex>
       <Box mt="35" mx="auto">
-          <GraficoBarras pretest={dataGrafico.pretest} postest={dataGrafico.postest} diferenciaFiable={(eed*1.96).toFixed(2)} icf={icf}/>
+          <GraficoBarras pretest={dataGrafico.pretest} postest={dataGrafico.postest} diferenciaFiable={Math.round(eed*1.96 * 100) / 100} icf={icf}/>
       </Box>
       </Flex>
           :null} 

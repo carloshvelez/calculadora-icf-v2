@@ -1,34 +1,39 @@
-import { BarChart } from '@mantine/charts';
+import { BarChart, ChartReferenceLineProps} from '@mantine/charts';
+import { LabelPosition } from 'recharts/types/component/Label';
 
+interface GraficoProps {
+  pretest: number,
+  postest: number,
+  icf: number,
+  diferenciaFiable: number
+}
 
+export default function GraficoBarras({pretest, postest, icf, diferenciaFiable} : GraficoProps) {
   
 
-export default function GraficoBarras(props) {
+  let etiquetaLinea:string, valorLinea:number, posicionEtiqueta:LabelPosition;
 
-  let etiquetaLinea, valorLinea, posicionEtiqueta
-
-
-  if (props.icf < 1.96 && props.icf >=0){
+  if (icf < 1.96 && icf >=0){
     etiquetaLinea = "El aumento NO es fiable"
-    valorLinea = parseFloat(props.pretest) + parseFloat(props.diferenciaFiable);
+    valorLinea = pretest + diferenciaFiable;
     posicionEtiqueta = 'insideBottomLeft'
-  }  else if (props.icf >= 1.96 ){
+  }  else if (icf >= 1.96 ){
     etiquetaLinea = "El aumento es fiable"
-    valorLinea = parseFloat(props.pretest) + parseFloat(props.diferenciaFiable);
+    valorLinea = pretest + diferenciaFiable;
     posicionEtiqueta = 'insideBottomLeft'
-  } else if (props.icf > -1.96 && props.icf < 0){
+  } else if (icf > -1.96 && icf < 0){
     etiquetaLinea = "La reducción NO es fiable"
-    valorLinea = parseFloat(props.pretest) - parseFloat(props.diferenciaFiable);
+    valorLinea = pretest - diferenciaFiable;
     posicionEtiqueta = 'insideTopRight'
   } else {
     etiquetaLinea = "La reducción es fiable";
-    valorLinea = parseFloat(props.pretest) - parseFloat(props.diferenciaFiable);
+    valorLinea = pretest - diferenciaFiable;
     posicionEtiqueta = 'insideBottomRight'
   }
  
  const data = [
-    { medicion: "Pretest", Resultado: props.pretest},
-    { medicion: "Postest", Resultado: props.postest},    
+    { medicion: "Pretest", Resultado: pretest},
+    { medicion: "Postest", Resultado: postest},    
   ];
 
  
@@ -40,8 +45,8 @@ export default function GraficoBarras(props) {
       data={data}      
       dataKey="medicion"
       gridColor='#dedede'
-      withLabels
-      yAxisProps={{domain: [0, props.pretest > props.postest ? Math.floor(props.pretest *1.2) : Math.floor(props.postest *1.2)] }}
+      
+      yAxisProps={{domain: [0, pretest > postest ? Math.floor(pretest *1.2) : Math.floor(postest *1.2)] }}
       referenceLines={[
         {
           y: valorLinea,
