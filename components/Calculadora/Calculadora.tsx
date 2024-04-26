@@ -132,13 +132,13 @@ export default function Calculadora() {
     <Box mx="20" >
     <Flex gap="lg"  justify="center" className={classes.tarjetas}>
       {eed ? <>        
-        <TarjetaResultados dato={Math.round(eed * 1000) / 1000} titulo="EED" descripcion="Error estandar de la diferencia"/>         
-        <TarjetaResultados dato={Math.round((eed * 1.96) * 1000) / 1000} titulo="Punto de corte" descripcion="Debe obtenerse al menos esta diferencia"/>         
+        <TarjetaResultados dato={Math.round(eed * 100) / 100} titulo="EED" descripcion="Error estandar de la diferencia"/>         
+        <TarjetaResultados dato={Math.round((eed * 1.96) * 100) / 100} titulo="Punto de corte" descripcion="Debe obtenerse al menos esta diferencia"/>         
         </>: null}
       {quiereICF && eed && icf? 
       <>            
           <TarjetaResultados dato={dataGrafico.postest  - dataGrafico.pretest} titulo="Diferencia actual" descripcion="Diferencia entre postest y pretest"/> 
-          <TarjetaResultados dato={Math.round(icf * 1000)/1000} titulo="Indice de cambio fiable" descripcion={Math.abs(icf) >= 1.96 ? "Diferencia fiable" : "Diferencia NO fiable"}/>      
+          <TarjetaResultados dato={Math.round(icf * 100)/100} titulo="Indice de cambio fiable" descripcion={Math.abs(icf) >= 1.96 ? "Diferencia fiable" : "Diferencia NO fiable"}/>      
       </>
          :null}     
     </Flex>
