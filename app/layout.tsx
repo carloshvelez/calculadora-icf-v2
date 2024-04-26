@@ -4,6 +4,8 @@ import { MantineProvider, ColorSchemeScript } from '@mantine/core';
 import { theme } from '../theme';
 import { Header } from '@/components/Header/Header';
 import Footer from '@/components/Footer/Footer';
+import { Analytics } from "@vercel/analytics/react"
+
 export const metadata = {
   title: 'Calculadora de Cambio Fiable',
   description: 'Calcula si tu intervención tuvo un cambio clínicamente significativo',
