@@ -32,8 +32,8 @@ export default function Calculadora() {
     },
 
     validate: {
-      desvest: (value) => (value >= 0 ? null : 'La desviación estándar debe ser un número positivo'),      
-      confiabilidad: (value) => (value > 0 && value < 1 ? null : 'La confiabilidad debe ser un número entre 0 y 1'), 
+      desvest: (value) => (value ?? 0 >= 0 ? null : 'La desviación estándar debe ser un número positivo'),      
+      confiabilidad: (value) => ((value ?? 0 )> 0 && (value ?? 0 < 1) ? null : 'La confiabilidad debe ser un número entre 0 y 1'), 
       
     },
   });
