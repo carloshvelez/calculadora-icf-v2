@@ -13,6 +13,7 @@ export default function RootLayout({ children }: { children: any }) {
   return (
     <html lang="en">
       <head>
+        
         <ColorSchemeScript />
         <link rel="icon" href="/favicon.svg"/>
         <meta
