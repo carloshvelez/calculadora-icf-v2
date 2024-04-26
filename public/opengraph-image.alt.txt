@@ -1,0 +1,2 @@
+Calculadora del Índice de Cambio Fiable
+Calcula si el cambio que observas es clínicamente significativo

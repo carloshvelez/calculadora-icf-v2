@@ -1,0 +1,40 @@
+.aplicacion {
+    background-color: #fafafa;
+    border-radius: 22px;
+    margin-inline: 15px;
+    padding-top: 15px;
+   
+    @media (max-width: $mantine-breakpoint-sm) {
+        flex-direction: column;
+        align-items: center;;
+
+      }
+
+}
+
+.tarjetas {
+    flex-wrap: wrap;
+    
+    @media (max-width: $mantine-breakpoint-sm) {
+        flex-direction: column;
+        align-content: center;
+        flex-wrap: wrap;
+        margin-top: 30px;
+      }
+
+      @media (max-width: $mantine-breakpoint-md) {
+        
+        margin-top: 30px;
+      }
+}
+
+
+.formulario {
+    margin-right: 0px;
+    position: relative;
+    @media (max-width: $mantine-breakpoint-md) {
+        justify-self: center;
+
+      }
+    
+}
