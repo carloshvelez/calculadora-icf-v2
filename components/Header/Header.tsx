@@ -1,11 +1,13 @@
 'use client'
 import { useState } from 'react';
-import { Container, Group, Burger, Text } from '@mantine/core';
+import { Container, Group, Burger, Text, Drawer } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import Link from 'next/link';
 import ComoCitar from '../ComoCitar/ComoCitar';
 
 import classes from './Header.module.css';
+
+import {  VisuallyHidden } from '@mantine/core';
 
 const links = [
   { link: '/', label: 'Calculadora' },
@@ -14,13 +16,21 @@ const links = [
 
 export function Header() {
   const [opened, { toggle }] = useDisclosure(false);
-  const [active, setActive] = useState(links[0].link);
+ 
+  
 
   const items = links.map((link) => (
     <Link
       key={link.label}
       href={link.link}
-      className={classes.link}        
+      className={classes.link}   
+      onClick={() =>{
+        if (opened){
+          toggle()
+        }
+        
+      }
+      }     
       
     >
       {link.label} 
@@ -33,15 +43,27 @@ export function Header() {
     <header className={classes.header}>
       
       <Container size="xl" className={classes.inner}>
+        
         <Text size="md" fw={500}>Calculadura de cambio fiable</Text>
         
-        <Group gap={5} visibleFrom="md">
+        <Group gap={5} visibleFrom="sm">
          {items}
          <ComoCitar/>
+         
         </Group>
+        <Burger opened={opened} onClick={toggle} hiddenFrom="sm" size="sm" />
+        <Drawer opened={opened} onClose={toggle} size="xs" closeOnClickOutside  withCloseButton={false}>
+          {items} 
+          <ComoCitar/> 
+          </Drawer>
+        
+        
           
-        <Burger opened={opened} onClick={toggle} hiddenFrom="xs" size="sm" />
+        
       </Container>
+
+      
+     
      
     </header>
   );

@@ -23,7 +23,7 @@ export default function ComoCitar(){
     }
 
     
-    let cita = `Vélez, C. H. (2024). Calculadora del Índice de Cambio Fiable (ICF). [en línea]. [consulta: ${fechaActual()}]. Recuperado de: https://carloshvelez.github.io/icf/`
+    let cita = `Vélez, C. H. (2024). Calculadora del Índice de Cambio Fiable (ICF). [en línea]. [consulta: ${fechaActual()}]. Recuperado de: https://calcularicf.vercel.app`
 
     function copiar(){
         navigator.clipboard.writeText(cita)
@@ -49,6 +49,7 @@ export default function ComoCitar(){
       leftSection={<IconPencilSearch/>} 
       variant="default"
       onClick={handleClose}
+      
       >¿Cómo citar?</Button>
        
       </>

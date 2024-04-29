@@ -1,5 +1,6 @@
-import { BarChart, ChartReferenceLineProps} from '@mantine/charts';
+import { BarChart} from '@mantine/charts';
 import { LabelPosition } from 'recharts/types/component/Label';
+
 
 interface GraficoProps {
   pretest: number,
@@ -37,11 +38,12 @@ export default function GraficoBarras({pretest, postest, icf, diferenciaFiable} 
   ];
 
  
-
+  
   return (
+    
     <BarChart
       h={300}
-      w={500}
+      w={350}
       data={data}      
       dataKey="medicion"
       gridColor='#dedede'
@@ -63,5 +65,6 @@ export default function GraficoBarras({pretest, postest, icf, diferenciaFiable} 
         
       ]}
     />
+    
   );
 }

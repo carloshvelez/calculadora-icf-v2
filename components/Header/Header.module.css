@@ -31,4 +31,13 @@
       background-color: var(--mantine-color-blue-filled);
       color: var(--mantine-color-white);
     }
+
+    @media (max-width: $mantine-breakpoint-sm) {
+      margin-bottom: 10px;      
+    }
+  }
+
+  .link:hover{
+    color: black;
+    background-color: rgba(141, 140, 140, 0.096);
   }

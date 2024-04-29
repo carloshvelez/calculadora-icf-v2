@@ -20,7 +20,7 @@ export default function TextoCalculo(){
     return(
         <Box bg="#e1e8e5">
             <Box h={18}></Box>
-            <Box bg="white" mx="17%" p="45px">
+            <Box   className={classes.contenedor}>
         <h1>Un paso a paso del procedimiento</h1>
     <p>El ICF responde a una pregunta: ¿Hay un cambio fiable en la variable, entre el tiempo 1 y el tiempo 2? Si el ICF es mayor que 1.96, entonces se acepta que sí hubo un cambio fiable. Si el ICF es menor que 1.96, entonces se asume que los cambios observados, si los hubiere, se deben a la variabilidad que cabe esperar debido a los errores de medida del instrumento. Para hacer este análisis, el ICF simplemente verifica si los cambios observados son esperables dada la confiabilidad del instrumento y la desviación estándar en las medidas de la variable tomadas en una muestra normativa.</p>
     <p>Para calcular el ICF seguiremos tres pasos:</p>
@@ -43,14 +43,14 @@ export default function TextoCalculo(){
     <Latex>{"$$EEM = 3.69$$"}</Latex>
     <h2 className={classes.titulo2}>Calculando el error estándar de las diferencias (EED)</h2>
     <p>Un principio en estadística afirma que, cuando comparamos la misma medida tomada en diferentes momentos (que es lo que hacemos con el ICF), el resultado tenderá a variar más que una única medida. El EED es una manera de tomar el EEM y hacer un cálculo para que refleje esa mayor variabilidad. La fórmula es muy sencilla:</p>
-    <Latex>{"$$EDD = EEM  \sqrt{2}$$"}</Latex>
+    <Latex>{"$$EDD = EEM  \\sqrt{2}$$"}</Latex>
     <p>En nuestro ejemplo, el EEM resultó en 3.69, así que la fórmula quedaría así:</p>
-    <Latex>{"$$EDD = 3.96  \sqrt{2}$$"}</Latex>
+    <Latex>{"$$EDD = 3.96  \\sqrt{2}$$"}</Latex>
     <Latex>{"$$EDD = 5.60  $$"}</Latex>
     <p>Ya casi lo tienes. De hecho este es el valor que te muestra la calculadora y es el que se multiplica por 1.96 para verificar si tus diferencias son confiables. Esto nos está diciendo que, para que tus diferencias sean confiables, deben ser superiores a 1.96 veces el error estándar de la diferencia (EED).</p>
     <h2 className={classes.titulo2}>Calculando el ICF</h2>
     <p>El índice de cambio confiable es simplemente la división de las diferencias entre tus medidas y el error estándar de la diferencia (EED). La fórmula que aplicamos sería esta:</p>
-    <Latex>{"$$ICF = \frac{X_{\text{post}} - X_{\text{pre}}}{EED}$$"}</Latex>
+    <Latex>{"$$ICF = \\frac{X_{\\text{post}} - X_{\\text{pre}}}{EED}$$"}</Latex>
     <p>Donde:</p>
     <p><Latex>{"$X_{\\text{post}}= $Tu medida post"}</Latex></p>
     <p><Latex>{"$X_{\\text{post}}= $Tu medida pre"}</Latex></p>
@@ -83,19 +83,19 @@ export default function TextoCalculo(){
 
     </ol>
     <h2 className={classes.titulo2}>Referencias bibliográficas</h2>
-    <p className={classes.cita}><span className="autor">Castillo, I. I.</span> (2010). <span className="titulo"> Evaluación de resultados clínicos (y III): Índices de Cambio Fiable (ICF) como estimadores del cambio clínicamente significativo.</span><span className={classes.revista}> Norte de Salud Mental</span><span className="volumen"> 8</span>(36), 105-122. Recuperado de: <a className="doi" href="https://dialnet.unirioja.es/descarga/articulo/4830423.pdf">https://dialnet.unirioja.es/descarga/articulo/4830423.pdf</a>.</p>
+    <p className={classes.cita}><span className="autor">Castillo, I. I.</span> (2010). <span className="titulo"> Evaluación de resultados clínicos (y III): Índices de Cambio Fiable (ICF) como estimadores del cambio clínicamente significativo.</span><span className={classes.revista}> Norte de Salud Mental</span><span className="volumen"> 8</span>(36), 105-122. Recuperado de: <a className={classes.enlace} href="https://dialnet.unirioja.es/descarga/articulo/4830423.pdf">https://dialnet.unirioja.es/descarga/articulo/4830423.pdf</a>.</p>
 
-    <p className={classes.cita}><span className="autor">Christensen, L. & Mendoza, J. L.</span> (1986). <span className="titulo">A method of assessing change in a single subject: An alteration of the RC index.</span><span className={classes.revista}> Behavior Therapy</span><span className="volumen"> 17</span>(3), 305-308. <a className="doi" href="https://doi.org/10.1016/S0005-7894(86)80060-0">https://doi.org/10.1016/S0005-7894(86)80060-0</a>.</p>
-
-
+    <p className={classes.cita}><span className="autor">Christensen, L. & Mendoza, J. L.</span> (1986). <span className="titulo">A method of assessing change in a single subject: An alteration of the RC index.</span><span className={classes.revista}> Behavior Therapy</span><span className="volumen"> 17</span>(3), 305-308. <a className={classes.enlace} href="https://doi.org/10.1016/S0005-7894(86)80060-0">https://doi.org/10.1016/S0005-7894(86)80060-0</a>.</p>
 
 
-    <p className={classes.cita}><span className="autor">Jacobson, N. S., Follette, W. C. & Revenstorf, D.</span> (1984). <span className="titulo">Psychotherapy outcome research: Methods for reporting variability and evaluating clinical significance.</span><span className={classes.revista}> Behavior Therapy</span><span className="volumen"> 15</span>(4), 336-352. <a className="doi" href="https://doi.org/10.1016/S0005-7894(84)80002-7">https://doi.org/10.1016/S0005-7894(84)80002-7</a>.</p>
 
-    <p className={classes.cita}><span className="autor">Jacobson N. S & Truax, P.</span> (1991). <span className="titulo">Clinical Significance: A statistical approach to defining meaningful change in psychotherapy.</span><span className={classes.revista}> Journal of Consulting and Clinical Psychology</span><span className="volumen"> 59</span>(1), 12-19. <a className="doi" href="https://doi.org/10.1037/0022-006X.59.1.12">https://doi.org/10.1037/0022-006X.59.1.12</a>.</p>
+
+    <p className={classes.cita}><span className="autor">Jacobson, N. S., Follette, W. C. & Revenstorf, D.</span> (1984). <span className="titulo">Psychotherapy outcome research: Methods for reporting variability and evaluating clinical significance.</span><span className={classes.revista}> Behavior Therapy</span><span className="volumen"> 15</span>(4), 336-352. <a className={classes.enlace} href="https://doi.org/10.1016/S0005-7894(84)80002-7">https://doi.org/10.1016/S0005-7894(84)80002-7</a>.</p>
+
+    <p className={classes.cita}><span className="autor">Jacobson N. S & Truax, P.</span> (1991). <span className="titulo">Clinical Significance: A statistical approach to defining meaningful change in psychotherapy.</span><span className={classes.revista}> Journal of Consulting and Clinical Psychology</span><span className="volumen"> 59</span>(1), 12-19. <a className={classes.enlace} href="https://doi.org/10.1037/0022-006X.59.1.12">https://doi.org/10.1037/0022-006X.59.1.12</a>.</p>
     <h2 className={classes.titulo2}>Cómo citar:</h2>
 
-    <p className={classes.cita}>Vélez, C. H. (2023). Calculadora del Índice de Cambio Fiable (ICF). [en línea]. [consulta: {fechaActual()}]. Recuperado de: https://carloshvelez.github.io/icf/.</p>
+    <p className={classes.cita}>Vélez, C. H. (2023). Calculadora del Índice de Cambio Fiable (ICF). [en línea]. [consulta: {fechaActual()}]. Recuperado de: https://calcularicf.vercel.app</p>
     </Box>
     <Box h={18}></Box>
     </Box>

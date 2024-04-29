@@ -2,6 +2,7 @@
 .titulo2{
     margin-top: 35px;
     font-weight: 700;
+    
 }
 
 
@@ -12,6 +13,9 @@
     
 }
 
+.enlace{
+    word-wrap: break-word;
+}
 
 
 .cita{
@@ -24,5 +28,17 @@
     font-style: italic;
 }
 
+.contenedor{
+    
+    padding: 45px;
+    margin: 0 17%;
+    background-color: white;
+    
+    @media (max-width: $mantine-breakpoint-sm) {
+        margin: 10px;   
+        background-color: white;   
+        
+      }
+}
 
 
