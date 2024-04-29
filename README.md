@@ -1,37 +1,32 @@
-# Mantine Next.js template
+# Calculadora de Índice de Cambio Fiable (ICF)
 
-This is a template for [Next.js](https://nextjs.org/) app router + [Mantine](https://mantine.dev/).
-If you want to use pages router instead, see [next-pages-template](https://github.com/mantinedev/next-pages-template).
+Esta es una aplicación de lado del cliente desarrollada en Next.js v14, con la ayuda de Mantine v7.8 como biblioteca de componentes React.
 
-## Features
+## Descripción
 
-This template comes with the following features:
+La aplicación recibe el input del usuario y, basándose en el mismo, calcula el Índice de Cambio Fiable (ICF). El ICF es una medida utilizada en ciencias del comportamiento para verificar si es clínicamente significativo el cambio observado entre una medición previa y una posterior.
 
-- [PostCSS](https://postcss.org/) with [mantine-postcss-preset](https://mantine.dev/styles/postcss-preset)
-- [TypeScript](https://www.typescriptlang.org/)
-- [Storybook](https://storybook.js.org/)
-- [Jest](https://jestjs.io/) setup with [React Testing Library](https://testing-library.com/docs/react-testing-library/intro)
-- ESLint setup with [eslint-config-mantine](https://github.com/mantinedev/eslint-config-mantine)
+## Características
 
-## npm scripts
+- Calcula el Índice de Cambio Fiable basado en el input del usuario.
+- Permite al usuario elegir ver los resultados en forma gráfica.
+- Proporciona un escrito explicando el procedimiento paso a paso utilizado para hacer el cálculo del ICF.
 
-### Build and dev scripts
+## Acceso
 
-- `dev` – start dev server
-- `build` – bundle application for production
-- `analyze` – analyzes application bundle with [@next/bundle-analyzer](https://www.npmjs.com/package/@next/bundle-analyzer)
+Se puede acceder desde [este enlace](https://calcularicf.vercel.app)
 
-### Testing scripts
+## Tecnologías utilizadas
 
-- `typecheck` – checks TypeScript types
-- `lint` – runs ESLint
-- `prettier:check` – checks files with Prettier
-- `jest` – runs jest tests
-- `jest:watch` – starts jest watch
-- `test` – runs `jest`, `prettier:check`, `lint` and `typecheck` scripts
+- Next.js v14
+- Mantine v7.8
+- React
+- Typescript
 
-### Other scripts
+## Contribuciones
 
-- `storybook` – starts storybook dev server
-- `storybook:build` – build production storybook bundle to `storybook-static`
-- `prettier:write` – formats all files with Prettier
+¡Las contribuciones son bienvenidas! Si encuentras algún error o tienes ideas para mejorar la aplicación, por favor, abre un issue o envía una solicitud de extracción.
+
+## Licencia
+
+Este proyecto está bajo la Licencia Creative Commons Atribbuion 4.0. Consulta el archivo `LICENSE` para más detalles.
