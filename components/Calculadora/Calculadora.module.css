@@ -2,7 +2,9 @@
     background-color: #c6e4f165;
     border-radius: 22px;
     margin-inline: 15px;
-    padding-top: 15px;
+    
+    padding: 15px;
+
    
     @media (max-width: $mantine-breakpoint-sm) {
         flex-direction: column;
