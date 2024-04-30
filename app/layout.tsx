@@ -9,6 +9,12 @@ import { Analytics } from "@vercel/analytics/react"
 export const metadata = {
   title: 'Calculadora de Cambio Fiable',
   description: 'Calcula si tu intervención tuvo un cambio clínicamente significativo',
+  applicationName: 'Calculadora de cambio fiable',
+  authors: [{name: 'Carlos Humberto Vélez Ocampo'}],
+  generator: 'Next.js',
+  keywords: ['Carlos Vélez', 'Carlos Humberto Vélez Ocampo', 'Cambio clínico', 'Cambio clínico significativo', 'Cambio fiable'],
+  creator: 'Carlos Vélez',
+  verification: {google: 'xEbUXkzU1DBS1ELHPxOSAsBmmbjnsPw-DFY5XRygPeM'}
 };
 
 export default function RootLayout({ children }: { children: any }) {
