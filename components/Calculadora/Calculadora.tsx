@@ -137,7 +137,7 @@ export default function Calculadora() {
         </>: null}
       {quiereICF && eed && icf? 
       <>            
-          <TarjetaResultados dato={dataGrafico.postest  - dataGrafico.pretest} titulo="Diferencia actual" descripcion="Diferencia entre postest y pretest"/> 
+          <TarjetaResultados dato={Math.round((dataGrafico.postest  - dataGrafico.pretest) * 100)/100} titulo="Diferencia actual" descripcion="Diferencia entre postest y pretest"/> 
           <TarjetaResultados dato={Math.round(icf * 100)/100} titulo="Indice de cambio fiable" descripcion={Math.abs(icf) >= 1.96 ? "Diferencia fiable" : "Diferencia NO fiable"}/>      
       </>
          :null}     
