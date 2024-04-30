@@ -4,18 +4,24 @@ import { Container, Group, Burger, Text, Drawer } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import Link from 'next/link';
 import ComoCitar from '../ComoCitar/ComoCitar';
-
 import classes from './Header.module.css';
-
-import {  VisuallyHidden } from '@mantine/core';
+import { usePathname } from 'next/navigation';
+import path from 'node:path/win32';
 
 const links = [
   { link: '/', label: 'Calculadora' },
   { link: '/calculo', label: 'Cálculo paso a paso' },
 ];
 
+
+
 export function Header() {
   const [opened, { toggle }] = useDisclosure(false);
+  let pathName = usePathname()
+  
+  
+
+  const isActive = (href:string):boolean => pathName === href;
  
   
 
@@ -23,11 +29,14 @@ export function Header() {
     <Link
       key={link.label}
       href={link.link}
-      className={classes.link}   
-      onClick={() =>{
-        if (opened){
+      className={pathName == link.link ? classes.link_active:  classes.link}   
+          
+      onClick={() =>{        
+        if (opened){          
           toggle()
-        }
+                  
+        }    
+           
         
       }
       }     
